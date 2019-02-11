@@ -1,0 +1,20 @@
+use std::vec::{self};
+use std::io::{self};
+use std::string::{self};
+use std::collections::{HashMap, HashSet};
+
+macro_rules! input{
+   () => {
+    let mut in = String::new();
+    io::stdin().read_line(&mut in);
+       in = in.split_whitespace();
+   }
+}
+
+
+
+fn main(){
+
+
+}
+
