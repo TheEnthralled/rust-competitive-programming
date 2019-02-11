@@ -3,18 +3,6 @@ use std::io::{self};
 use std::string::{self};
 use std::collections::{HashMap};
 
-//macro_rules! input{
-//   () => {
-//       let mut line = String::new();
-//       io::stdin().read_line(&mut line);
-//       let mut inp_ = line.split_whitespace();
-//       macro_rules! inp{
-//           ($t:ty) => {inp_.next().unwrap().parse::<$t>().unwrap();}
-//       }
-//   }
-//}
-
-
 fn solve(test: i64, memo: &mut HashMap<i64,i64>) -> i64 {
     if memo.contains_key(&test){
         return memo[&test];
@@ -38,7 +26,6 @@ fn solve(test: i64, memo: &mut HashMap<i64,i64>) -> i64 {
 }
 
 fn main(){
-    //input!();
     let mut answers : Vec<i64> = Vec::new();
     while true{
        let mut line = String::new();
@@ -56,4 +43,3 @@ fn main(){
         println!("{}", i);
     }
 }
-
