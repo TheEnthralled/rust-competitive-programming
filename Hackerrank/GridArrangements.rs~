@@ -1,0 +1,62 @@
+use std::io::{self};
+use std::vec::{self};
+
+
+const MAX_N  : usize = 100000;
+const MAX_SQRT_N : usize = 316; 
+
+fn gen_primes() -> Vec<i32>{
+    let mut is_prime : [bool ; MAX_N] = [true; MAX_N];
+    for i in 2..MAX_SQRT_N {
+        if is_prime[i]{
+            let mut ind = i+i;
+            while ind < MAX_N {
+                is_prime[ind] = false;
+                ind = ind + i;
+            }
+        }
+    }
+    let mut primes = Vec::new();
+    for i in 2..MAX_N {
+        if is_prime[i]{
+            primes.push(i as i32);
+        }
+    }
+    primes
+}
+
+fn sum_divisors(n : i32 , primes: &Vec<i32>) -> i32{
+    let mut sum = 1;
+    let mut n = n;
+    for prime in primes {
+        if n == 0 {
+            break;
+        }
+        let mut pow  = 0;
+        while n % prime == 0 && n != 0 {
+            println!("{}", n);
+            pow = pow + 1;
+            n = n / prime;
+            
+        }
+        sum = sum * pow;
+    }
+    return sum;
+}
+
+fn main(){
+    //println!("{:?}", gen_primes());
+    let primes = gen_primes();
+    let mut prev_sum = 0;
+    let mut sums : Vec<i32> = Vec::new();
+    for i in 1..MAX_N{
+        let sum = sum_divisors(i as i32, &primes);
+        sums.push(sum + prev_sum);
+        prev_sum = prev_sum + sum;
+    }
+    for i in 0..4{
+        println!("{}",sums[i]);
+    }
+    
+        
+}
